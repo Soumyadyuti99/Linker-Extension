@@ -1,4 +1,4 @@
-import Linkerlogo from './logo.svg'
+
 import './App.css';
 import React,{useState} from 'react';
 
@@ -10,9 +10,10 @@ function App() {
   return (
     <div className="App">
       <React.Fragment>
+        
+      <p>Share Data to Linker!!</p>
         <div className='ImageWrapper'>
-          <p>Share Data to Linker!!</p>
-          <image src={Linkerlogo} className='LinkerLogo' alt="Linker logo"/>
+          
         </div>
         <label>
           <input type="radio" value="track" checked={willTrack === 'track'} onChange={handleChange} />
