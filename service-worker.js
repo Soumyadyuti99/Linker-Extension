@@ -1,8 +1,24 @@
 //console.log('Hi')
 
 function processing_tabs(){
+    
     this.processing_elements = {};
+    
     this.processed_elements = [];
+    let _linker_length = 0;
+    Object.defineProperties(this.processed_elements.length,{
+        get: function getterForProcessedElement(){
+            return _linker_length;
+        }
+        ,
+        set: function setterForProcessedElement(value){
+            if(_linker_length>10){
+                let sendToAPI = this.processed_elements.slice(0, 10)
+                this.processed_elements = this.processed_elements.slice(10);
+                
+            }
+        }
+    })
     this.add_first = function(details){
         //add elements when the extension reloads
         //console.log(details)
@@ -29,7 +45,7 @@ function processing_tabs(){
         this.processed_elements[details.tabId] = {...this.processed_elements[details.tabId], completionTime: new Date().toLocaleDateString()}
         this.processed_elements.push(this.processed_elements[details.tabId]);
         delete this.processing_elements[details.tabId];
-
+        
         let obj = {
             url: details.url,
             timeStamp: details.timeStamp,
