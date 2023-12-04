@@ -6,16 +6,17 @@ function processing_tabs(){
     
     this.processed_elements = [];
     let _linker_length = 0;
-    Object.defineProperties(this.processed_elements.length,{
+    Object.defineProperty(this,'processed_elements.length',{
         get: function getterForProcessedElement(){
             return _linker_length;
         }
         ,
         set: function setterForProcessedElement(value){
+            _linker_length=value; 
             if(_linker_length>10){
                 let sendToAPI = this.processed_elements.slice(0, 10)
                 this.processed_elements = this.processed_elements.slice(10);
-                
+                _linker_length -=10;
             }
         }
     })
